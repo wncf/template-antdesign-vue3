@@ -24,11 +24,11 @@
   </a-menu>
 </template>
 <script setup>
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, watch, nextTick } from "vue";
 import subMenu from "./subMenu.vue";
-import router from "~/router/index";
+import { useRoute } from "vue-router";
 const props = defineProps(["menu"]);
-
+const route = useRoute();
 const collapsed = ref(false);
 const toggleCollapsed = () => {
   collapsed.value = !collapsed.value;
@@ -41,6 +41,17 @@ const onOpenChange = (CurrentKeys) => {
   const arry = CurrentKeys[CurrentKeys.length - 1];
   openKeys.value = [arry];
 };
-const menuItemSelect = (item) => {
-};
+// 监视路由数据变化，选中左侧选中项
+watch(
+  () => route.name,
+  (newValue) => {
+    nextTick(() => {
+      if (!selectedKeys.value.includes(newValue)) {
+        selectedKeys.value = [newValue];
+      }
+    });
+  },
+  { immediate: true }
+);
+const menuItemSelect = (item) => {};
 </script>

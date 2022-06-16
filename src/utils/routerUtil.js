@@ -1,6 +1,7 @@
 import { getMenu } from "../api/common";
 import BasicLayout from "../layout/BasicLayout.vue";
 import { useAppStore } from "~/store/index";
+import routerview from "../layout/childrenLayout/RouterView.vue";
 export const generatorDynamicRouter = () => {
   // const layoutDic = {
   //   BasicLayout: BasicLayout,
@@ -43,23 +44,21 @@ const modules = import.meta.glob("../view/**/**.vue");
 console.log(modules);
 
 //路由组件匹配规则
+//最上级使用 basciLayout
+// 有chidren并且子级大于1的父级路由 使用routerview(可自定义)的渲染
+// 
 const RouterComponent = (item) => {
-  if (item.name === "index") {
+  if (item.path === "/") {
     return BasicLayout;
-  }
-  if (item.children && item.children.length > 1) {
-    if (modules[`../view${item.url}.vue`]) {
-      return modules[`../view${item.url}.vue`];
-    } else {
-      console.error(`../view${item.url}.vue;不存在,使用404页面替代`);
-      return modules[`../view/not-found/index.vue`];
-    }
   } else {
-    if (modules[`../view${item.url}.vue`]) {
-      return modules[`../view${item.url}.vue`];
+    if (item.children && item.children.length >= 1) {
+      return routerview;
     } else {
-      console.error(`../view${item.url}.vue;不存在,使用404页面替代`);
-      return modules[`../view/not-found/index.vue`];
+      if (item.code === "Index") {
+        return modules[`../view${item.url}.vue`];
+      } else {
+        return modules[`../view${item.url}/index.vue`];
+      }
     }
   }
 };
@@ -81,8 +80,6 @@ export const generator = (routerMap, parent) => {
           // 路由名称，建议唯一
           name: item.code,
           // 该路由对应页面的 组件
-          // () => import("../view/" + item.url + ".vue")
-          // 当前是否有子项目，有就渲染
           component: RouterComponent(item),
           // meta: 页面标题, 菜单图标, 页面权限(供指令权限用，可去掉)
           meta: {

@@ -41,7 +41,7 @@ import pageHeader from "~/components/PageHeader/index.vue";
 import {useAppStore} from "~/store/index";
 const AppStore = useAppStore()
 const menuList = computed(()=>AppStore.menu)
-
+console.log(menuList.value, '菜单构建数据');
 
 const collapsed = ref(false);
 const onTrigger = () => {

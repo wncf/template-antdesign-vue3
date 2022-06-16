@@ -12,7 +12,7 @@ export default function setupPermissionGuard(router) {
   const { getMenuData, routersData } = Permission;
   router.beforeEach((to, from, next) => {
     nProgress.start();
-    console.log(to);
+    console.log(to, "页面跳转");
     if (localStorage.getItem(token)) {
       if (to.path === "/user/login") {
         console.log("前往登录");
