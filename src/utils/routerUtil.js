@@ -46,7 +46,7 @@ console.log(modules);
 //路由组件匹配规则
 //最上级使用 basciLayout
 // 有chidren并且子级大于1的父级路由 使用routerview(可自定义)的渲染
-// 
+//
 const RouterComponent = (item) => {
   if (item.path === "/") {
     return BasicLayout;
@@ -57,7 +57,11 @@ const RouterComponent = (item) => {
       if (item.code === "Index") {
         return modules[`../view${item.url}.vue`];
       } else {
-        return modules[`../view${item.url}/index.vue`];
+        if (modules[`../view${item.url}/index.vue`]) {
+          return modules[`../view${item.url}/index.vue`];
+        } else {
+          return modules[`../view/not-found/index.vue`];
+        }
       }
     }
   }

@@ -3,8 +3,6 @@ import { token } from "~/config/Static_config";
 import { useUserStore } from "~/store/index";
 import { useAppStore } from "~/store/index";
 const whiteList = ["login", "404"];
-const modules = import.meta.glob("./view/**/**.vue");
-console.log(modules);
 export default function setupPermissionGuard(router) {
   const userStore = useUserStore();
   const Permission = useAppStore();
