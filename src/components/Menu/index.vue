@@ -13,7 +13,7 @@
         <a-menu-item :key="item.code">
           <router-link :to="item.url" replace>{{ item.name }}</router-link>
           <template #icon v-if="item.icon">
-            <component :is="`${item.icon}Outlined3`" />
+            <component :is="`${item.icon}Outlined`" />
           </template>
         </a-menu-item>
       </template>

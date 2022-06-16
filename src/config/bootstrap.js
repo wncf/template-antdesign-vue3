@@ -4,7 +4,7 @@ import "ant-design-vue/es/message/style/css";
 export const AntComponentImport = {
   install(app) {
     for (let comp in icons) {
-      app.component(icons[comp].name, icons[comp]);
+      app.component(comp, icons[comp]);
     }
   },
 };

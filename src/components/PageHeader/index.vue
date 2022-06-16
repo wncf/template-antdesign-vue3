@@ -1,16 +1,31 @@
+<script setup>
+import { computed } from "vue";
+import { useUserStore } from "~/store/index";
+import { token } from "~/config/Static_config";
+
+const UserStore = useUserStore();
+const UserInfo = computed(() => UserStore.userInfo);
+const account = UserInfo.value.account;
+
+const onLogout = () => {
+  localStorage.removeItem(token);
+  window.location.reload();
+};
+</script>
+
 <template>
   <div class="header-fill">
     <div class="user">
       <a-avatar class="avatar" src="https://joeschmoe.io/api/v1/random" />
       <a-dropdown>
-        <a class="ant-dropdown-link" @click.prevent> 用户姓名 </a>
+        <a class="ant-dropdown-link" @click.prevent> {{ account }} </a>
         <template #overlay>
-          <a-menu>
+          <a-menu class="menu">
             <a-menu-item>
               <a href="javascript:;">修改密码</a>
             </a-menu-item>
             <a-menu-item>
-              <a href="javascript:;">退出登录</a>
+              <a @click="onLogout">退出登录</a>
             </a-menu-item>
             <a-menu-item>
               <a href="javascript:;">更多信息</a>
@@ -22,6 +37,12 @@
   </div>
 </template>
 <style lang="less" scoped>
+.menu {
+  a {
+    display: block;
+    padding: 4px 0;
+  }
+}
 .user {
   display: flex;
   align-items: center;
@@ -34,12 +55,12 @@
   margin-right: 24px;
 }
 .avatar {
-  margin-right: 12px;
+  margin-right: 6px;
 }
 .ant-dropdown-link {
-  height: 42px;
-  width: 120px;
+  height: 64px;
+  min-width: 80px;
   text-align: center;
-  line-height: 42px;
+  line-height: 64px;
 }
 </style>
