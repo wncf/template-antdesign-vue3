@@ -1,8 +1,10 @@
 <script setup>
+import { ref } from "vue";
 </script>
 <template>
-      <router-view></router-view>
+  <a-config-provider componentSize="large">
+    <router-view></router-view>
+  </a-config-provider>
 </template>
 
-<style>
-</style>
+<style></style>

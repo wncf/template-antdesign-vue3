@@ -8,4 +8,3 @@ Nprogress.configure({
   trickleSpeed: 200,
   minimum: 0.3,
 });
-
