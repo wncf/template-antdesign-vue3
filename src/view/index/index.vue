@@ -1,5 +1,5 @@
 <template>
-  <a-card style="height: 100%">
+  <a-card>
     <div class="example">
       <a-input />
     </div>

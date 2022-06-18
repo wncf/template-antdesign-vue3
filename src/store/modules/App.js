@@ -5,10 +5,12 @@ const UseCommin = defineStore({
   state: () => ({
     menuData: [],
     routersData: [],
+    AppconfigData: [],
   }),
   getters: {
     menu: (state) => state.menuData,
     routers: (state) => state.routersData,
+    Appconfig: (state) => state.AppconfigData,
   },
   actions: {
     getMenuData() {
@@ -22,6 +24,9 @@ const UseCommin = defineStore({
     setMenu(data) {
       this.menuData = data;
     },
+    setTheme(){
+      
+    }
   },
 });
 export default UseCommin;

@@ -18,5 +18,9 @@ app.config.errorHandler = (err, vm, info) => {
 app.use(pinia);
 setupPermissionGuard(router);
 app.use(AntComponentImport);
+import { ConfigProvider } from "ant-design-vue";
+ConfigProvider.config({
+  theme: "rgb(24, 144, 255)",
+});
 
 app.use(router).mount("#app");

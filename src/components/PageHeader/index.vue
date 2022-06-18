@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { useUserStore } from "~/store/index";
 import { token } from "~/config/Static_config";
-
+import settingsVue from "./components/settings.vue";
 const UserStore = useUserStore();
 const UserInfo = computed(() => UserStore.userInfo);
 const account = UserInfo.value.account;
@@ -17,7 +17,7 @@ const onLogout = () => {
   <div class="header-fill">
     <div class="user">
       <a-avatar class="avatar" src="https://joeschmoe.io/api/v1/random" />
-      <a-dropdown>
+      <a-dropdown class="user-dropdown">
         <a class="ant-dropdown-link" @click.prevent> {{ account }} </a>
         <template #overlay>
           <a-menu class="menu">
@@ -33,6 +33,7 @@ const onLogout = () => {
           </a-menu>
         </template>
       </a-dropdown>
+      <settingsVue />
     </div>
   </div>
 </template>
@@ -52,15 +53,18 @@ const onLogout = () => {
   display: flex;
   align-items: center;
   justify-content: end;
-  margin-right: 24px;
+  margin-right: 26px;
 }
 .avatar {
-  margin-right: 6px;
+  margin: 6px;
 }
 .ant-dropdown-link {
   height: 64px;
   min-width: 80px;
   text-align: center;
   line-height: 64px;
+}
+.user-dropdown{
+  margin-right: 24px;
 }
 </style>

@@ -9,7 +9,20 @@ html,body{
 #app{
   height: 100%;
 }
-
+// 全局滚动条样式类
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 2em;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+  border-radius: 2em;
+}
 // 自定义类样式
 .flexCenter{
   display: flex;

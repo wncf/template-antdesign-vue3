@@ -1,6 +1,6 @@
 <template>
   <a-layout>
-    <a-layout-sider v-model:collapsed="collapsed" collapsible width="256px" class="sider">
+    <a-layout-sider :trigger="null" v-model:collapsed="collapsed" collapsible width="256px" class="sider">
       <div class="logo" />
       <Menu :menu="menuList" :style="{ overflow: 'auto' }" />
     </a-layout-sider>
