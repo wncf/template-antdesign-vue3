@@ -7,7 +7,6 @@ import "~/config/globalStyles.less";
 import "ant-design-vue/es/message/style/css";
 import { AntComponentImport } from "~/config/bootstrap";
 import setupPermissionGuard from "./permission";
-import "./mock/index.js";
 
 const app = createApp(App);
 

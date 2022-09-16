@@ -1,11 +1,7 @@
 <template>
   <div class="container">
     <div class="logo">
-      <img
-        alt="logo"
-        src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-      />
-      <div class="logo-text">项目名称</div>
+      <div class="logo-text">模板项目</div>
     </div>
     <LoginBanner />
     <div class="content">
@@ -25,7 +21,7 @@ import LoginForm from "./components/LoginForm.vue";
 .container {
   display: flex;
   height: 100vh;
-
+  min-width: 1080px;
   .banner {
     width: 550px;
     background: linear-gradient(163.85deg, #1d2129 0%, #00308f 100%);
