@@ -47,9 +47,6 @@
         <a-button type="primary" block :loading="loading" html-type="submit">
           登录
         </a-button>
-        <a-button type="text" block class="login-form-register-btn">
-          注册账号
-        </a-button>
       </a-space>
     </a-form>
   </div>
